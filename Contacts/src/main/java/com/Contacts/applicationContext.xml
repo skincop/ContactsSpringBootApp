@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="com.Contacts.Aspects.GeneralLogAspect"/>
+    <aop:aspectj-autoproxy />
+
+
+    <aop:config>
+        <aop:aspect id="logging" ref="com.Contacts.Aspects.GeneralLogAspect" >
+
+            <aop:pointcut id="log"   expression="execution(* com.Contacts.Controllers.AdminController.*(..)))" />
+            <aop:before method="before" pointcut-ref="log" />
+            <aop:after method="after" pointcut-ref="log" />
+        </aop:aspect>
+    </aop:config>
+</beans>

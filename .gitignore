@@ -1,0 +1,15 @@
+<#import "parts/common.ftl" as c>
+<#import "parts/loginForm.ftl" as l>
+<#import "parts/contactForm.ftl" as cf>
+
+<@c.page>
+    <form method="post" action="/contacts/update/${contact.id}">
+        <input type="text" name="firstName" value="${contact.firstName}"/>
+        <input type="text" name="secondName" value="${contact.secondName}"/>
+        <input type="email" name="email" value="${contact.email}"/>
+        <input type="tel" name="phone" value="${contact.phoneNumber}"/>
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <input type="hidden" name="user" value="${userId?if_exists}" />
+        <input type="submit" name="send">
+    </form>
+</@c.page>
